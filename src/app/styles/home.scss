@@ -1,0 +1,13 @@
+.p-button:focus:not(.p-disabled),
+.p-button:enabled:focus {
+    outline: 0 none !important;
+    box-shadow: none !important;
+}
+
+.bg-transition-enter {
+    transition: background-color 300ms ease-in-out;
+}
+
+.bg-transition-exit {
+    transition: background-color 300ms ease-in-out;
+}
