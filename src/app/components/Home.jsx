@@ -1,19 +1,53 @@
+import { useEffect, useState } from 'react';
 import { Button } from 'primereact/button';
+import { HomeContext } from '../page';
 import Header from './Header';
-import Podcasts from './Podcasts';
+import Podcasts from './NewReleases';
+import TrendingTopItems from './TrendPlaylists';
+import UserRecentlyPlayed from './UserRecentlyPlayed';
+
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 import '../styles/home.scss';
-import UserTopItems from './UserTopItems';
 
 export default function HomePage() {
+    const [isOpen, setIsOpen] = useState(false);
+    const [windowSize, setWindowSize] = useState([
+        window.innerWidth,
+        window.innerHeight,
+    ]);
+
+    useEffect(() => {
+        const handleWindowResize = () => {
+            setWindowSize([window.innerWidth, window.innerHeight]);
+        };
+
+        window.addEventListener('resize', handleWindowResize);
+
+        if (windowSize[0] > 1000) {
+            setIsOpen(true);
+        } else {
+            setIsOpen(false);
+        }
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, [windowSize]);
+
+    useEffect(() => {
+    }, [isOpen]);
+
+
+    console.log(windowSize[0])
 
     return (
-        <div className="grid p-dir-col overflow-hidden" style={{ backgroundColor: "#000000" }}>
-            <div className="col-12 flex h-screen">
-                <div className='h-auto flex flex-column align-items-stretch'>
+        <div className="grid align-items-center justify-content-center p-dir-col overflow-hidden" style={{ backgroundColor: "#000000" }}>
+            <div className="col-12 flex h-screen ">
+
+                <div style={{ width: isOpen ? '400px' : '0px', transition: 'width .2s', overflow: 'hidden' }} className='h-auto flex flex-column align-items-stretch'>
                     <div className="col-fixed mt-3 mb-1 mx-1 flex flex-column justify-content-start surface-900 w-25rem border-round">
                         <Button label="Accueil" className="text-left mb-2 surface-900 border-transparent" icon="pi pi-home" />
                         <Button label="Rechercher" className="text-left mb-2 surface-900 border-transparent text-gray-400 hover:text-white" icon="pi pi-search" />
@@ -44,13 +78,33 @@ export default function HomePage() {
                         </div>
                     </div>
                 </div>
-                <div className="content col mt-3 mx-1 p-0 h-auto overflow-x-hidden surface-900 border-round">
+
+
+
+
+
+                <div style={{ marginLeft: isOpen ? '300px' : '0px', transition: 'margin-left .2s' }} className="scrollableDiv flex-1 content col mt-3 mx-1 p-0 h-auto overflow-x-hidden surface-900 border-round">
+
                     <Header></Header>
-                    <div className='flex flex-column'>
-                        <Podcasts />
-                        <UserTopItems />
-                        <Podcasts />
-                        <Podcasts />
+                    <div className='flex flex-column '>
+                        <HomeContext.Consumer>
+                            {({ isLoggedIn }) => (
+                                <>
+                                    {isLoggedIn ? (
+                                        <>
+                                            <UserRecentlyPlayed />
+                                            <Podcasts />
+                                            <TrendingTopItems />
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Podcasts />
+                                            <TrendingTopItems />
+                                        </>
+                                    )}
+                                </>
+                            )}
+                        </HomeContext.Consumer>
                     </div>
                 </div>
             </div>

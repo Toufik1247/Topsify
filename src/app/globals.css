@@ -11,13 +11,17 @@
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
-
-
 ::-webkit-scrollbar-thumb {
   background-color: #3d3d3d;
 }
-
-
 ::-webkit-scrollbar-thumb:hover {
   background-color: #555555;
+}
+
+@media screen and (max-width: 769px) {
+
+  .scrollableDiv::-webkit-scrollbar {
+    display: none;
+  }
+
 }

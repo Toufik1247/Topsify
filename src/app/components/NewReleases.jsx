@@ -1,9 +1,7 @@
 import React from 'react';
-import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeflex/primeflex.css';
-import fetchData from './api/fetchData';
 import { Card } from 'primereact/card';
+import fetchData from './api/fetchData';
+
 import '../styles/podcast.scss'
 
 export default function Podcasts() {
@@ -28,14 +26,16 @@ export default function Podcasts() {
         <div>
             <div className="card flex flex-column justify-content-center">
                 <h1 className="text-white ml-2 mt-2">Nouvelles tendances</h1>
-                <div className="flex">
-                    {albums.slice(0, 6).map((album) =>
+                <div className='flex overflow-x-auto'>
+                    {albums.slice(0, 19).map((album) =>
                         <Card
                             key={album.id}
                             title={album.name}
                             subTitle={album.artists.map((artist) => artist.name).join(", ")}
                             header={header(album.images[1].url)}
-                            className="md:w-25rem m-3 bg-black-alpha-30 hover:bg-black-alpha-10 text-white text-sm customTitle p-3 cursor-pointer">
+                            className="md:w-25rem m-3 bg-black-alpha-30 hover:bg-black-alpha-10 text-white text-sm customTitle p-3 cursor-pointer"
+                            style={{ minWidth: '300px', display: 'inline-block' }}
+                        >
                         </Card>
                     )}
                 </div>
