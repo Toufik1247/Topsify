@@ -3,7 +3,7 @@ import { Button } from 'primereact/button';
 import Header from './components/Header';
 import Link from 'next/link';
 
-import './styles/home.scss';
+import './styles/home.css';
 
 export default function Layout({ children }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -82,7 +82,7 @@ export default function Layout({ children }) {
                         </div>
                     </div>
                 </div>
-                <div style={{ marginLeft: isOpen ? '300px' : '0px' }} className="bg-transition sidebarSecond flex-1 content col mt-3 mx-1 p-0 h-auto overflow-x-hidden bgSecond border-round">
+                <div style={{ marginLeft: isOpen ? '300px' : '0px' }} className="bgTransition sidebarSecond flex-1 content col mt-3 mx-1 p-0 h-auto overflow-auto bgSecond border-round">
                     <Header />
                     {children}
                 </div>

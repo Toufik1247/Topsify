@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from 'primereact/card';
 import fetchData from './api/fetchData';
+import { ProgressSpinner } from 'primereact/progressspinner';
 
 import '../styles/podcast.scss'
 
@@ -9,12 +10,19 @@ export default function Podcasts() {
     const { data, error, loading } = fetchData('https://api.spotify.com/v1/browse/new-releases?country=FR&limit=10');
 
     if (loading) {
-        return <div>Chargement...</div>;
+        return (
+            <div className='flex align-items-center justify-content-center min-h-screen bg-black-alpha-90'>
+                <ProgressSpinner className='' animationDuration=".7s" />
+            </div>
+        );
     }
 
     if (error) {
-        return <div>Une erreur s'est produite: {error.message}</div>;
+        return <div className='flex align-items-center justify-content-center min-h-screen font-bold text-white text-5xl bg-black-alpha-90'>
+            Une erreur s'est produite: {error.message}
+        </div>;
     }
+
 
     const albums = data.albums.items
 

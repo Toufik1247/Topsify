@@ -1,13 +1,13 @@
-// import { HomeContext } from './page';
 import { useState, useEffect, createContext } from 'react';
 import { getSession } from 'next-auth/react';
 import { ProgressSpinner } from 'primereact/progressspinner';
 
-export const HomeContext = createContext();
+export const HomeContext = createContext({});
 
 export const HomeContextProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [value, setValue] = useState('');
 
     useEffect(() => {
         (async function checkSession() {
@@ -33,9 +33,8 @@ export const HomeContextProvider = ({ children }) => {
             </div>
         );
     }
-
     return (
-        <HomeContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+        <HomeContext.Provider value={{ isLoggedIn, setIsLoggedIn, value, setValue }}>
             {children}
         </HomeContext.Provider>
     );

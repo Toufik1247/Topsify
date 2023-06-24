@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Card } from 'primereact/card';
+import { ProgressSpinner } from 'primereact/progressspinner';
 
 export default function UserRecentlyPlayed() {
     const [tracks, setTracks] = useState([]);
@@ -18,7 +19,11 @@ export default function UserRecentlyPlayed() {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return (
+            <div className='flex align-items-center justify-content-center min-h-screen bg-black-alpha-90'>
+                <ProgressSpinner className='' animationDuration=".7s" />
+            </div>
+        );
     }
 
     const recentlyPlayedTracks = tracks.data.items?.map(item => ({

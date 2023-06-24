@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { signIn, signOut } from "next-auth/react"
 import { CSSTransition } from 'react-transition-group';
 import { Button } from 'primereact/button';
@@ -7,13 +7,9 @@ import { HomeContext } from '../HomeContextProvider';
 import { usePathname } from "next/navigation";
 import { InputText } from 'primereact/inputtext';
 
-
 export default function Header() {
-
     const [pathName, setPathName] = useState('');
-    const [value, setValue] = useState('');
-
-    console.log(value)
+    const { value, setValue } = useContext(HomeContext);
 
     const actualPath = usePathname()
     useEffect(() => {
@@ -44,7 +40,7 @@ export default function Header() {
         <CSSTransition
             in={scroll}
             timeout={500}
-            classNames="bg-transition"
+            classNames="bgTransition"
         >
             <div className={`h-auto flex justify-content-between p-3 sticky top-0 z-1 ${scroll ? 'bgSecond' : 'bg-black-alpha-90'}`}>
                 <div className="flex lg:w-25rem md:w-20rem">

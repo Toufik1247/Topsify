@@ -5,11 +5,11 @@
 }
 
 .bgTransition-enter {
-    transition: background-color 1000ms ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .bgTransition-exit {
-    transition: background-color 1000ms ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
 @media screen and (max-width: 1200px) {
