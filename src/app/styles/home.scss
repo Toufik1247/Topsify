@@ -4,11 +4,20 @@
     box-shadow: none !important;
 }
 
-.bg-transition-enter {
-    transition: background-color 300ms ease-in-out;
+.bgTransition-enter {
+    transition: background-color 1000ms ease-in-out;
 }
 
-.bg-transition-exit {
-    transition: background-color 300ms ease-in-out;
+.bgTransition-exit {
+    transition: background-color 1000ms ease-in-out;
 }
 
+@media screen and (max-width: 1200px) {
+    .sidebar {
+        transition: width 1s !important;
+    }
+
+    .sidebarSecond {
+        transition: margin-left 1s !important;
+    }
+}
