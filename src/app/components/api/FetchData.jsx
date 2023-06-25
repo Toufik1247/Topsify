@@ -26,7 +26,7 @@ const FetchData = (url, maxRetries = 2) => {
         return fetchedToken;
     };
 
-    const getData = async (token) => {
+    const getData = useCallback(async (token) => {
         const response = await axios.get(url, {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -40,7 +40,7 @@ const FetchData = (url, maxRetries = 2) => {
         } else {
             throw new Error(`HTTP response status not OK: ${response.status}`);
         }
-    };
+    }, [url]);
 
     const tryAgain = useCallback(async () => {
         if (retries >= maxRetries) {
@@ -57,7 +57,7 @@ const FetchData = (url, maxRetries = 2) => {
             setError(err);
             setRetries(retries => retries + 1);
         }
-    }, [retries, maxRetries, url, getData]);
+    }, [retries, maxRetries, getData]);
 
     useEffect(() => {
         setTimeout(() => {

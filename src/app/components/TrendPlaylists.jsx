@@ -3,6 +3,7 @@ import FetchData from './api/FetchData';
 import { Card } from 'primereact/card';
 import '../styles/podcast.scss'
 import { ProgressSpinner } from 'primereact/progressspinner';
+import Image from 'next/image';
 
 export default function TrendingTopItems() {
 
@@ -25,7 +26,7 @@ export default function TrendingTopItems() {
     const playlists = data.playlists.items
 
     const header = (img) => (
-        <img alt="Card" src={img} />
+        <Image alt="Card" src={img} width={300} height={300} />
     );
 
     return (

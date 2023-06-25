@@ -28,7 +28,7 @@ export default function SearchPage() {
         </div>;
     }
 
-    console.log(data);
+    // console.log(data);
 
     return (
         <Layout>
