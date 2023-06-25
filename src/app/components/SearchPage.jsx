@@ -1,7 +1,7 @@
 import Layout from '../Layout';
 import { useContext, useEffect } from 'react';
 import { HomeContext } from '../HomeContextProvider';
-import fetchData from './api/fetchData';
+import FetchData from './api/FetchData';
 import CatoregiesGenre from './CategoriesGenre';
 import { ProgressSpinner } from 'primereact/progressspinner';
 
@@ -12,7 +12,7 @@ export default function SearchPage() {
 
     const url = value === '' ? 'https://api.spotify.com/v1/search?q=a&type=album,artist,playlist,track,show,episode,audiobook&market=fr&limit=50' : `https://api.spotify.com/v1/search?q=${value}&type=album,artist,playlist,track,show,episode,audiobook&market=fr&limit=1`;
 
-    const { data, error, loading } = fetchData(url);
+    const { data, error, loading } = FetchData(url);
 
     if (loading) {
         return (
@@ -24,7 +24,7 @@ export default function SearchPage() {
 
     if (error) {
         return <div className='flex align-items-center justify-content-center min-h-screen font-bold text-white text-5xl bg-black-alpha-90'>
-            Une erreur s'est produite: {error.message}
+            Une erreur s&apos;est produite: {error.message}
         </div>;
     }
 

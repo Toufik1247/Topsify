@@ -14,7 +14,7 @@ export default function Header() {
     const actualPath = usePathname()
     useEffect(() => {
         setPathName(actualPath)
-    }, [pathName]);
+    }, [pathName, actualPath]);
 
 
     const [scroll, setScroll] = useState(false);

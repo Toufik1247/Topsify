@@ -1,13 +1,14 @@
 import React from 'react';
 import { Card } from 'primereact/card';
-import fetchData from './api/fetchData';
+import FetchData from './api/FetchData';
 import { ProgressSpinner } from 'primereact/progressspinner';
+import Image from 'next/image';
 
 import '../styles/podcast.scss'
 
 export default function Podcasts() {
 
-    const { data, error, loading } = fetchData('https://api.spotify.com/v1/browse/new-releases?country=FR&limit=10');
+    const { data, error, loading } = FetchData('https://api.spotify.com/v1/browse/new-releases?country=FR&limit=10');
 
     if (loading) {
         return (
@@ -19,7 +20,7 @@ export default function Podcasts() {
 
     if (error) {
         return <div className='flex align-items-center justify-content-center min-h-screen font-bold text-white text-5xl bg-black-alpha-90'>
-            Une erreur s'est produite: {error.message}
+            Une erreur s&apos;est produite: {error.message}
         </div>;
     }
 
@@ -27,7 +28,8 @@ export default function Podcasts() {
     const albums = data.albums.items
 
     const header = (img) => (
-        <img alt="Card" src={img} />
+        <Image alt="Card" src={img} width={300} height={300} />
+
     );
 
     return (

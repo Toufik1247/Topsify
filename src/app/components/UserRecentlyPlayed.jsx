@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Card } from 'primereact/card';
 import { ProgressSpinner } from 'primereact/progressspinner';
+import Image from 'next/image';
 
 export default function UserRecentlyPlayed() {
     const [tracks, setTracks] = useState([]);
@@ -42,7 +43,7 @@ export default function UserRecentlyPlayed() {
     );
 
     const header = (img) => (
-        <img alt="Card" src={img} />
+        <Image alt="Card" src={img} width={300} height={300} />
     );
 
     return (

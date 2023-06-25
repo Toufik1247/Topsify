@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import getToken from './getToken';
 
-const fetchData = (url, maxRetries = 2) => {
+const FetchData = (url, maxRetries = 2) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -57,7 +57,7 @@ const fetchData = (url, maxRetries = 2) => {
             setError(err);
             setRetries(retries => retries + 1);
         }
-    }, [retries, maxRetries, url]);
+    }, [retries, maxRetries, url, getData]);
 
     useEffect(() => {
         setTimeout(() => {
@@ -68,5 +68,5 @@ const fetchData = (url, maxRetries = 2) => {
     return { data, error, loading };
 };
 
-export default fetchData;
+export default FetchData;
 

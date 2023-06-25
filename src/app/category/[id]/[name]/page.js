@@ -1,9 +1,10 @@
 "use client"
-import fetchData from "@/app/components/api/fetchData";
+import FetchData from "@/app/components/api/FetchData";
 import { ProgressSpinner } from "primereact/progressspinner";
 import Layout from "@/app/Layout";
 import { Card } from "primereact/card";
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 import '../../../globals.css';
 
@@ -15,7 +16,7 @@ export default function ProductDetail({ params }) {
         setDecodedName(decodeURIComponent(params.name));
     }, [params.name]);
 
-    const { data, error, loading } = fetchData(`https://api.spotify.com/v1/browse/categories/${params.id}/playlists?country=FR`);
+    const { data, error, loading } = FetchData(`https://api.spotify.com/v1/browse/categories/${params.id}/playlists?country=FR`);
 
     if (loading) {
         return (
@@ -27,14 +28,14 @@ export default function ProductDetail({ params }) {
 
     if (error) {
         return <div className='flex align-items-center justify-content-center min-h-screen font-bold text-white text-5xl bg-black-alpha-90'>
-            Une erreur s'est produite: {error.message}
+            Une erreur s&apos;est produite: {error.message}
         </div>;
     }
 
     const playlists = data.playlists.items
 
     const header = (img) => (
-        <img alt="Card" src={img} />
+        <Image alt="Card" src={img} width={300} height={300} />
     );
 
     // console.log(playlists)

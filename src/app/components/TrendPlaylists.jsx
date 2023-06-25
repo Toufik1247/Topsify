@@ -1,12 +1,12 @@
 import React from 'react';
-import fetchData from './api/fetchData';
+import FetchData from './api/FetchData';
 import { Card } from 'primereact/card';
 import '../styles/podcast.scss'
 import { ProgressSpinner } from 'primereact/progressspinner';
 
 export default function TrendingTopItems() {
 
-    const { data, error, loading } = fetchData('https://api.spotify.com/v1/browse/featured-playlists?country=FR&limit=10');
+    const { data, error, loading } = FetchData('https://api.spotify.com/v1/browse/featured-playlists?country=FR&limit=10');
 
     if (loading) {
         return (
@@ -18,7 +18,7 @@ export default function TrendingTopItems() {
 
     if (error) {
         return <div className='flex align-items-center justify-content-center min-h-screen font-bold text-white text-5xl bg-black-alpha-90'>
-            Une erreur s'est produite: {error.message}
+            Une erreur s&apos;est produite: {error.message}
         </div>;
     }
 

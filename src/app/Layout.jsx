@@ -63,7 +63,7 @@ export default function Layout({ children }) {
                         </div>
                         <div className="col-fixed py-3 mt-1 mb-8 mx-1 flex flex-column align-items-left bgThird border-round">
                             <h2 className="text-white text-base font-bold px-2 py-2 ">Créez votre première playlist</h2>
-                            <h4 className="text-white text-sm font-normal px-2  pt-2 pb-4">C'est simple, nous allons vous aider</h4>
+                            <h4 className="text-white text-sm font-normal px-2 pt-2 pb-4">C&apos;est simple, nous allons vous aider</h4>
                             <Button label="Créer une playlist" rounded className="w-6 text-center text-sm font-bold  bg-white-alpha-90 border-transparent text-900 hover:text-900" />
                         </div>
                         <div className="col-fixed py-3 mb-8 mx-1 flex flex-column align-items-left bgThird border-round">

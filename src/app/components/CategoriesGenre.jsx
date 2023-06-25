@@ -1,14 +1,15 @@
 import { useContext } from 'react';
 import { HomeContext } from '../HomeContextProvider';
-import fetchData from './api/fetchData';
+import FetchData from './api/FetchData';
 import Link from 'next/link';
 import { ProgressSpinner } from 'primereact/progressspinner';
+import Image from 'next/image';
 
 export default function CatoregiesGenre() {
     const { value } = useContext(HomeContext);
     // console.log(value)
 
-    const { data, error, loading } = fetchData('https://api.spotify.com/v1/browse/categories?country=FR&locale=fr_FR&limit=50');
+    const { data, error, loading } = FetchData('https://api.spotify.com/v1/browse/categories?country=FR&locale=fr_FR&limit=50');
 
     if (loading) {
         return (
@@ -20,7 +21,7 @@ export default function CatoregiesGenre() {
 
     if (error) {
         return <div className='flex align-items-center justify-content-center min-h-screen font-bold text-white text-5xl bg-black-alpha-90'>
-            Une erreur s'est produite: {error.message}
+            Une erreur s&apos;est produite: {error.message}
         </div>;
     }
 
@@ -28,7 +29,7 @@ export default function CatoregiesGenre() {
 
     const header = (img, name) => (
         <div className='relative'>
-            <img alt="category" className='border-round-xl' style={{ width: '200px' }} src={img} />
+            <Image alt="category" className='border-round-xl' width={200} height={200} src={img} />
             <div
                 className='absolute text-white font-bold text-xl bottom-0 mb-3 ml-3 '
             >
