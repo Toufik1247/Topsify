@@ -5,6 +5,9 @@ import Layout from "@/app/Layout";
 import { Card } from "primereact/card";
 import { useEffect, useState } from 'react';
 
+import '../../../globals.css';
+
+
 export default function ProductDetail({ params }) {
     const [decodedName, setDecodedName] = useState('');
 
@@ -33,6 +36,8 @@ export default function ProductDetail({ params }) {
     const header = (img) => (
         <img alt="Card" src={img} />
     );
+
+    // console.log(playlists)
 
     return (
         <Layout>

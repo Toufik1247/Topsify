@@ -1,34 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Topsify
 
-## Getting Started
+Topsify est un clone de Spotify réalisé avec Next.js 13 et qui consomme l'API Spotify.
 
-First, run the development server:
+## Live Version
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+[Topsify](https://topsify.2screens.dev/)
+
+## Fonctionnalités
+
+- Connexion au compte utilisateur
+- Affichage des musiques récemment écoutées par l'utilisateur
+- Affichage des playlists générales
+- Recherche parmis les albums, artistes, playlists, podcasts (à venir)
+- Affichage des playlists personnelles (à venir)
+- Création et édition de playlists (à venir)
+
+## Prérequis
+
+- Node.js et NPM
+
+## Installation
+
+1. Cloner le dépôt:
+
+```
+git clone https://github.com/Toufik1247/topsify.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Créer une application sur le site de Spotify consacré aux developpeurs 
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
+https://developer.spotify.com/dashboard
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Dans le dashboard Spotify de votre application, définir "Redirect URis" : 
 
-## Learn More
+```
+http://localhost:3000/api/auth/callback/spotify
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Generer une clé secrète NextAuth
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+5. Naviguer dans le dossier projet, renommer et editer le fichier .env.local.example
 
-## Deploy on Vercel
+```
+cd topsify
+mv .env.local.example .env.local
+nano .env.local
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+6. Lancer le projet
+
+```
+npm run dev
+```
+

@@ -6,7 +6,7 @@ import { ProgressSpinner } from 'primereact/progressspinner';
 
 export default function CatoregiesGenre() {
     const { value } = useContext(HomeContext);
-    console.log(value)
+    // console.log(value)
 
     const { data, error, loading } = fetchData('https://api.spotify.com/v1/browse/categories?country=FR&locale=fr_FR&limit=50');
 
@@ -24,7 +24,7 @@ export default function CatoregiesGenre() {
         </div>;
     }
 
-    const categories = data.categories.items
+    const categories = data?.categories?.items
 
     const header = (img, name) => (
         <div className='relative'>
@@ -41,15 +41,15 @@ export default function CatoregiesGenre() {
         <div className=' flex flex-column justify-content-center'>
             <h2 className='text-white ml-4 my-5'>Parcourir tout</h2>
             <div className='flex ml-4 h-50 overflow-auto lg:flex-wrap md:flex-nowrap'>
-                {categories.map((categorie) =>
-                    <Link href={`/category/${categorie.id}/${categorie.name}`}
-                        key={categorie.id}
+                {categories?.map((categorie) =>
+                    <Link href={`/category/${categorie?.id}/${categorie?.name}`}
+                        key={categorie?.id}
                     >
                         <div
                             className=' m-2 cursor-pointer'
 
                         >
-                            {header(categorie.icons[0].url, categorie.name)}
+                            {header(categorie?.icons[0]?.url, categorie?.name)}
                         </div>
                     </Link>
                 )}

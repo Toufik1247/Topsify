@@ -47,7 +47,7 @@ export default function UserRecentlyPlayed() {
 
     return (
         <div>
-            <h1 className="text-white mt-2">Ecoutés récemment</h1>
+            <h1 className="text-white mt-2 ml-2">Ecoutés récemment</h1>
             <div className='flex overflow-x-auto'>
                 {filteredTracks?.slice(0, 19).map((album) =>
                     <Card
