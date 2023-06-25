@@ -54,9 +54,16 @@ nano .env.local
 ```
 
 
-6. Lancer le projet
+6. Lancer le projet en mode développement
 
 ```
 npm run dev
+```
+
+7. Construire le projet et lancer en mode production
+
+```
+npm run build
+npm run start
 ```
 
