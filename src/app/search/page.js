@@ -1,15 +1,14 @@
 "use client"
 import SearchPage from '../components/SearchPage';
-import { HomeContextProvider } from '../HomeContextProvider';
+import { SessionProvider } from 'next-auth/react'
 
-export default function Search() {
+export default function Search(params) {
+
     return (
-        <HomeContextProvider>
-
-
+        <SessionProvider>
             <div className='overflow-hidden'>
                 <SearchPage />
             </div>
-        </HomeContextProvider>
+        </SessionProvider>
     );
 }

@@ -3,18 +3,21 @@ import Layout from "../Layout";
 import UserRecentlyPlayed from "./UserRecentlyPlayed";
 import Podcasts from "./NewReleases";
 import TrendingTopItems from "./TrendPlaylists";
-import { HomeContextProvider } from "../HomeContextProvider";
 import { HomeContext } from "../HomeContextProvider";
+import { useSession } from "next-auth/react";
+import { SessionProvider } from 'next-auth/react'
 
-export default function Home() {
+export default function HomePage() {
+    const { session } = useSession();
+    const loadingStatus = false
 
     return (
-        <HomeContextProvider>
-            <Layout>
+        <SessionProvider session={session}>
+            <Layout isLoading={loadingStatus}>
                 <HomeContext.Consumer>
-                    {({ isLoggedIn }) => (
+                    {({ userIsLoggedIn }) => (
                         <>
-                            {isLoggedIn ? (
+                            {userIsLoggedIn ? (
                                 <>
                                     <UserRecentlyPlayed />
                                     <Podcasts />
@@ -30,7 +33,6 @@ export default function Home() {
                     )}
                 </HomeContext.Consumer>
             </Layout>
-        </HomeContextProvider>
-
+        </SessionProvider >
     );
 }

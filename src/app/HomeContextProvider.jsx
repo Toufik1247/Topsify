@@ -1,40 +1,18 @@
-import { useState, useEffect, createContext } from 'react';
-import { getSession } from 'next-auth/react';
-import { ProgressSpinner } from 'primereact/progressspinner';
+"use client"
+import { useState, createContext } from 'react';
+import { useSession } from 'next-auth/react';
 
 export const HomeContext = createContext({});
 
 export const HomeContextProvider = ({ children }) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [value, setValue] = useState('');
 
-    useEffect(() => {
-        (async function checkSession() {
-            const session = await checkLoginStatus();
-            if (session) {
-                setIsLoggedIn(true);
-            } else {
-                setIsLoggedIn(false);
-            }
-            setIsLoading(false);
-        })();
-    }, []);
+    const { data: session, status } = useSession();
+    const userIsLoggedIn = !!session;
 
-    async function checkLoginStatus() {
-        const session = await getSession();
-        return session;
-    }
-
-    if (isLoading) {
-        return (
-            <div className='flex align-items-center justify-content-center min-h-screen bg-black-alpha-90'>
-                <ProgressSpinner className='' animationDuration=".7s" />
-            </div>
-        );
-    }
     return (
-        <HomeContext.Provider value={{ isLoggedIn, setIsLoggedIn, value, setValue }}>
+        <HomeContext.Provider value={{ userIsLoggedIn, value, setValue, isLoading }}>
             {children}
         </HomeContext.Provider>
     );

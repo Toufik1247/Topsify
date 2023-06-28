@@ -4,18 +4,8 @@ import { signIn, signOut } from "next-auth/react"
 import { CSSTransition } from 'react-transition-group';
 import { Button } from 'primereact/button';
 import { HomeContext } from '../HomeContextProvider';
-import { usePathname } from "next/navigation";
-import { InputText } from 'primereact/inputtext';
 
 export default function Header() {
-    const [pathName, setPathName] = useState('');
-    const { value, setValue } = useContext(HomeContext);
-
-    const actualPath = usePathname()
-    useEffect(() => {
-        setPathName(actualPath)
-    }, [pathName, actualPath]);
-
 
     const [scroll, setScroll] = useState(false);
     useEffect(() => {
@@ -43,29 +33,11 @@ export default function Header() {
             classNames="bgTransition"
         >
             <div className={`h-auto flex justify-content-between p-3 sticky top-0 z-1 ${scroll ? 'bgSecond' : 'bg-black-alpha-90'}`}>
-                <div className="flex lg:w-25rem md:w-20rem">
-                    <Button rounded className="mr-2 bg-black-alpha-90  border-transparent" icon="pi pi-chevron-left" />
-                    <Button rounded className="bg-black-alpha-90 border-transparent" icon="pi pi-chevron-right" />
-                    {pathName === '/search' ?
-                        <>
-                            <span className="p-input-icon-left w-full text-white">
-                                <i className="pi pi-search w-1 text-white" />
-                                <InputText
-                                    value={value}
-                                    onChange={(e) => setValue(e.target.value)}
-                                    placeholder="Que souhaitez-vous écouter ?"
-                                    className='w-full p-inputtext-lg font-bold text-sm text-white bgThird border-transparent border-round-3xl' />
-                            </span>
-                        </>
-                        :
-                        <>
-                        </>}
-                </div>
                 <div className="flex">
                     <HomeContext.Consumer>
-                        {({ isLoggedIn }) => (
+                        {({ userIsLoggedIn }) => (
                             <>
-                                {isLoggedIn ? (
+                                {userIsLoggedIn ? (
                                     <Button
                                         onClick={() => signOut("spotify")}
                                         label="Se déconnecter"

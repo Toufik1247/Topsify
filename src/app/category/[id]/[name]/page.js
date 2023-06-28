@@ -1,10 +1,11 @@
 "use client"
-import FetchData from "@/app/components/api/FetchData";
-import { ProgressSpinner } from "primereact/progressspinner";
-import Layout from "@/app/Layout";
-import { Card } from "primereact/card";
 import { useEffect, useState } from 'react';
+import { SessionProvider } from "next-auth/react";
 import Image from 'next/image';
+import { ProgressSpinner } from "primereact/progressspinner";
+import { Card } from "primereact/card";
+import FetchData from "@/app/components/api/FetchData";
+import Layout from "@/app/Layout";
 
 import '../../../globals.css';
 
@@ -38,27 +39,27 @@ export default function ProductDetail({ params }) {
         <Image alt="Card" src={img} width={300} height={300} />
     );
 
-    // console.log(playlists)
-
     return (
-        <Layout>
-            <div className="card flex flex-column justify-content-center">
-                <h1 className="text-white ml-2 mt-2">{decodedName}</h1>
-                <div className='flex overflow-x-auto'>
-                    {playlists.slice(0, 19).map((playlist) =>
-                        <Card
-                            key={playlist.id}
-                            title={playlist.name}
-                            subTitle={playlist.description}
-                            header={header(playlist.images[0].url)}
-                            className="m-3 bg-black-alpha-30 hover:bg-black-alpha-10 text-white text-sm customTitle p-3 cursor-pointer"
-                            style={{ minWidth: '300px' }}
-                        >
-                        </Card>
-                    )}
+        <SessionProvider>
+            <Layout>
+                <div className="card flex flex-column justify-content-center">
+                    <h1 className="text-white ml-2 mt-2">{decodedName}</h1>
+                    <div className='flex overflow-x-auto'>
+                        {playlists.slice(0, 19).map((playlist) =>
+                            <Card
+                                key={playlist.id}
+                                title={playlist.name}
+                                subTitle={playlist.description}
+                                header={header(playlist.images[0].url)}
+                                className="m-3 bg-black-alpha-30 hover:bg-black-alpha-10 text-white text-sm customTitle p-3 cursor-pointer"
+                                style={{ minWidth: '300px' }}
+                            >
+                            </Card>
+                        )}
+                    </div>
                 </div>
-            </div>
-        </Layout>
+            </Layout>
+        </SessionProvider>
     )
 }
 

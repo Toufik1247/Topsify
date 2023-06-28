@@ -1,13 +1,9 @@
-import { useContext } from 'react';
-import { HomeContext } from '../HomeContextProvider';
 import FetchData from './api/FetchData';
 import Link from 'next/link';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import Image from 'next/image';
 
-export default function CatoregiesGenre() {
-    const { value } = useContext(HomeContext);
-    // console.log(value)
+export default function CategorieGenre() {
 
     const { data, error, loading } = FetchData('https://api.spotify.com/v1/browse/categories?country=FR&locale=fr_FR&limit=50');
 
@@ -46,10 +42,7 @@ export default function CatoregiesGenre() {
                     <Link href={`/category/${categorie?.id}/${categorie?.name}`}
                         key={categorie?.id}
                     >
-                        <div
-                            className=' m-2 cursor-pointer'
-
-                        >
+                        <div className=' m-2 cursor-pointer'>
                             {header(categorie?.icons[0]?.url, categorie?.name)}
                         </div>
                     </Link>
