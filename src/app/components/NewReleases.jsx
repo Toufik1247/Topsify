@@ -9,7 +9,7 @@ import { HomeContextProvider } from '../HomeContextProvider';
 
 export default function Podcasts({ isLoading }) {
 
-    const { data, error, loading } = FetchData('https://api.spotify.com/v1/browse/new-releases?country=FR&limit=10');
+    const { data, error, loading } = FetchData('https://api.spotify.com/v1/browse/new-releases?country=FR&limit=6');
 
     if (loading) {
         return (

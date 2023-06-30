@@ -6,7 +6,7 @@ const SearchedArtist = ({ data }) => {
 
     return (
         <div className='flex flex-wrap'>
-            {data?.map(artist => (
+            {data?.slice(0, 10).map(artist => (
                 <div
                     key={artist?.id}
                     className='bg-black-alpha-70 m-3 flex flex-column border-round-lg max-w-12rem'>

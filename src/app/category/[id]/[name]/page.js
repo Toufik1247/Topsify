@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { ProgressSpinner } from "primereact/progressspinner";
 import { Card } from "primereact/card";
 import FetchData from "@/app/components/api/FetchData";
-import Layout from "@/app/Layout";
+import Layout from "@/app/components/Layout";
 
 import '../../../globals.css';
 

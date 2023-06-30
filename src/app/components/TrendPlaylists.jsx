@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 export default function TrendingTopItems() {
 
-    const { data, error, loading } = FetchData('https://api.spotify.com/v1/browse/featured-playlists?country=FR&limit=10');
+    const { data, error, loading } = FetchData('https://api.spotify.com/v1/browse/featured-playlists?country=FR&limit=6');
 
     if (loading) {
         return (
@@ -33,12 +33,12 @@ export default function TrendingTopItems() {
         <div className="card flex flex-column justify-content-center">
             <h1 className="text-white ml-2 mt-2">{data.message}</h1>
             <div className='flex overflow-x-auto'>
-                {playlists.slice(0, 19).map((playlist) =>
+                {playlists?.slice(0, 19).map((playlist) =>
                     <Card
-                        key={playlist.id}
-                        title={playlist.name}
-                        subTitle={playlist.description}
-                        header={header(playlist.images[0].url)}
+                        key={playlist?.id}
+                        title={playlist?.name}
+                        subTitle={playlist?.description}
+                        header={header(playlist?.images[0]?.url)}
                         className="m-3 bg-black-alpha-30 hover:bg-black-alpha-10 text-white text-sm customTitle p-3 cursor-pointer"
                         style={{ minWidth: '300px' }}
                     >

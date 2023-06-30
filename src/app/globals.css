@@ -12,6 +12,17 @@
   text-decoration: none;
 }
 
+.disable-text-selection {
+  -moz-user-select: none;
+  /* firefox */
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE*/
+  user-select: none;
+  /* Standard syntax */
+}
+
 ::-webkit-scrollbar {
   width: 15px;
 }
@@ -35,6 +46,24 @@
 .bgThird {
   background-color: #242424 !important;
 }
+
+
+.p-datatable .p-datatable-tbody>tr,
+.p-datatable .p-datatable-thead>tr,
+.p-datatable .p-datatable-thead>tr>th,
+.p-datatable .p-datatable-tfoot>tr {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.p-datatable .p-datatable-thead>tr>th {
+  color: #bbaeae !important;
+}
+
+.p-datatable .p-datatable-tbody>tr>td {
+  border: none !important;
+}
+
 
 @media screen and (max-width: 769px) {
 

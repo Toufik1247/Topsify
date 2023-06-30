@@ -1,5 +1,5 @@
 "use client"
-import Layout from "../Layout";
+import Layout from "./Layout";
 import UserRecentlyPlayed from "./UserRecentlyPlayed";
 import Podcasts from "./NewReleases";
 import TrendingTopItems from "./TrendPlaylists";

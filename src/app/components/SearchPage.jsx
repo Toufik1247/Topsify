@@ -1,4 +1,4 @@
-import Layout from '../Layout';
+import Layout from './Layout';
 import { useEffect, useState } from 'react';
 import FetchData from './api/FetchData';
 import CategoriesGenre from './CategoriesGenre';
@@ -26,7 +26,7 @@ export default function SearchPage({ children }) {
 
     const handleSearchClick = () => {
         setSearchValue(inputValue);
-        const newUrl = `https://api.spotify.com/v1/search?q=${inputValue}&type=album,artist,playlist,track&limit=20`;
+        const newUrl = `https://api.spotify.com/v1/search?q=${inputValue}&type=album,artist,playlist,track&limit=50`;
         setUrl(newUrl);
     };
 
@@ -67,13 +67,11 @@ export default function SearchPage({ children }) {
                 console.log("Invalid filter type");
         }
 
-        console.log(filterType)
-
         setFilteredData(filteredData);
     }
 
 
-    const labels = ["Artistes", "Titres", "Albums", "Playlists", "Podcasts et émissions", "Profils"]
+    const labels = ["Artistes", "Titres"]
 
     if (error) {
         return <div className='flex align-items-center justify-content-center min-h-screen font-bold text-white text-5xl bg-black-alpha-90'>
@@ -123,8 +121,6 @@ export default function SearchPage({ children }) {
                         {
                             filterType === 'artistes' ? <SearchedArtist data={filteredData} /> :
                                 filterType === 'titres' ? <SearchedTrack data={filteredData} /> :
-                                    // filterType === 'albums' ? <SearchedAlbum data={filteredData} /> :
-                                    // filterType === 'playlists' ? <SearchedPlaylist data={filteredData} /> :
                                     null
                         }
 

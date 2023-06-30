@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { signIn, signOut } from "next-auth/react"
 import { CSSTransition } from 'react-transition-group';
 import { Button } from 'primereact/button';
@@ -32,7 +32,7 @@ export default function Header() {
             timeout={500}
             classNames="bgTransition"
         >
-            <div className={`h-auto flex justify-content-between p-3 sticky top-0 z-1 ${scroll ? 'bgSecond' : 'bg-black-alpha-90'}`}>
+            <div className={`h-auto flex justify-content-end p-3 sticky top-0 z-1 ${scroll ? 'bgSecond' : 'bg-black-alpha-90'}`}>
                 <div className="flex">
                     <HomeContext.Consumer>
                         {({ userIsLoggedIn }) => (
