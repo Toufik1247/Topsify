@@ -53,19 +53,19 @@ mv .env.local.example .env.local
 nano .env.local
 ```
 
-6. installer les dépendances
+6. Installer les dépendances
 
 ```
 npm install
 ```
 
-8. Lancer le projet en mode développement
+7. Lancer le projet en mode développement
 
 ```
 npm run dev
 ```
 
-9. Construire le projet et lancer en mode production
+8. Construire le projet et lancer en mode production
 
 ```
 npm run build
