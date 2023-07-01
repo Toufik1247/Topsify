@@ -8,12 +8,12 @@ Topsify est un clone de Spotify réalisé avec Next.js 13 et qui consomme l'API 
 
 ## Fonctionnalités
 
-- Connexion au compte utilisateur
-- Affichage des musiques récemment écoutées par l'utilisateur
+- Connexion au compte utilisateur (facultatif)
+- Affichage des musiques récemment écoutées par l'utilisateur (facultatif)
 - Affichage des playlists générales
-- Recherche parmis les albums, artistes, playlists, podcasts (à venir)
-- Affichage des playlists personnelles (à venir)
-- Création et édition de playlists (à venir)
+- Recherche parmis les albums et artistes
+- Affichage des playlists personnelles (facultatif)
+- Création de playlists personnelles (facultatif)
 
 ## Prérequis
 
